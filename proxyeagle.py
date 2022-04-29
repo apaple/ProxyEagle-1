@@ -52,8 +52,14 @@ def FileRead(file = argv[2]):
 
 def ProxyConnector(**info):
     try:
-        header = f"""GET / HTTP/1.1
-Host: www.pix4.dev:{info['protocol']}
+        if info['protocol'] == "socks" or info['protocol'] == "http":
+            header = f"""GET / HTTP/1.1
+Host: www.pix4.dev:80
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (compatible; Discordbot/1.0; +https://discordapp.com)"""
+        else:
+            header = f"""GET / HTTP/1.1
+Host: www.pix4.dev:443
 Connection: keep-alive
 User-Agent: Mozilla/5.0 (compatible; Discordbot/1.0; +https://discordapp.com)"""
         port = int(info['port'])
