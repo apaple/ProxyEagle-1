@@ -15,8 +15,9 @@ def Usage():
 > python3 {__file__} timeout file.txt protocol
 
 [Example]
-> python3 {__file__} 20 proxies.txt http
-> python3 {__file__} 20 proxies.txt https
+> python3 {__file__} 6 proxies.txt http
+> python3 {__file__} 6 proxies.txt https
+> python3 {__file__} 6 proxies.txt socks
 """)
 
 def Logo():
@@ -32,7 +33,7 @@ try:
     int(argv[1])
     str(argv[2])
 
-    if "http" or "https" or "socks" or "socks4" or "socks5" in argv[3]:
+    if "http" or "https" in argv[3]:
         pass
     else:
         raise RuntimeError()
@@ -51,13 +52,7 @@ def FileRead(file = argv[2]):
 
 def ProxyConnector(**info):
     try:
-        if argv[3] == "socks" or argv[3] == "socks4" or argv[3] == "socks5":
-            header = f"""GET / HTTP/1.1
-Host: www.pix4.dev:80
-Connection: keep-alive
-User-Agent: Mozilla/5.0 (compatible; Discordbot/1.0; +https://discordapp.com)"""
-        else:
-            header = f"""GET / HTTP/1.1
+        header = f"""GET / HTTP/1.1
 Host: www.pix4.dev:{info['protocol']}
 Connection: keep-alive
 User-Agent: Mozilla/5.0 (compatible; Discordbot/1.0; +https://discordapp.com)"""
