@@ -12,6 +12,7 @@ ProxyEagle is connecting to the proxies and send a request to the host ```pix4.d
 - Efficient Proxy Check
 - HTTP/HTTPS/SOCKS Support
 
+```For socks checking just do python3 proxyeagle timeout proxies.txt http```
 
 
 ### Requirement
@@ -29,3 +30,4 @@ By using the application you agree to the following terms of use:
 
 ### Screenshot
 <img src="eagless.png">
+
