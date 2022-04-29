@@ -67,9 +67,25 @@ User-Agent: Mozilla/5.0 (compatible; Discordbot/1.0; +https://discordapp.com)"""
         return f"\033[31mBad proxy: \033[33m{info['proxy']}:{info['port']}\033[0m"
     finally:
         sockInit.close()
-
+def CheckFile():
+    invalid = False
+    ct = FileRead()
+    for check in ct:
+        if ":" not in check:
+            invalid = True
+            break
+    if invalid:
+        return False
+    else:
+        return True
 def Main():
     Logo()
+    checkX = CheckFile()
+    if checkX == False:
+        print("\033[31mYour proxy file contains not a correct format!\nFormats needs to be like proxy:port in each line, remove white lines\033[0m")
+        return exit(-1)
+    else:
+       pass
     ct = FileRead()
 
     if type(ct) is list:
