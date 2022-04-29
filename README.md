@@ -29,6 +29,7 @@ For https checking just do python3 proxyeagle.py timeout proxies.txt socks
 
 ### Requirement
 ```Python```
+```Python 3.2+```
 
 ### Developer
 **This application is developed by Z3NTL3 for Pix4.**
