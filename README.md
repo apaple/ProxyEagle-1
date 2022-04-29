@@ -15,7 +15,7 @@ for each line
 
 **Run like:**<br>
 ```
-python3 proxyeagle timeout proxies.txt protocol
+python3 proxyeagle.py timeout proxies.txt protocol
 
 For socks checking just do python3 proxyeagle.py timeout proxies.txt socks
 For http checking just do python3 proxyeagle.py timeout proxies.txt http
