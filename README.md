@@ -1,5 +1,5 @@
 # ProxyEagle
- Proxy Eagle is an advanced proxy checker powered with parallelism. Using Socket API. Build with basic python libraries. 🦅
+ Proxy Eagle is an advanced proxy checker powered with parallelism. Using Socket API. Build with standard python libraries. 🦅
 
 ProxyEagle is connecting to the proxies and sends a request to the host ```pix4.dev:80/pix.dev:443``` if succeeds it saves the good proxies on 'goods.txt' in the same directory as this tool.
 <a href="https://www.youtube.com/watch?v=qpyL-w5xLwc"> Video Proof</a><br>
