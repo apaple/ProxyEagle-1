@@ -10,8 +10,7 @@ ProxyEagle is connecting to the proxies and sends a request to the host ```pix4.
 Your ``proxies.txt`` file format needs to be like:
 ```
 proxy:port
-```
-for each line
+``` for each line
 
 **Run like:**<br>
 ```
