@@ -10,7 +10,7 @@ ProxyEagle is connecting to the proxies and send a request to the host ```pix4.d
 - Parallel threads
 - Custom timeout for proxy check
 - Efficient Proxy Check
-- HTTP/HTTPS Support
+- HTTP/HTTPS/SOCKS Support
 
 
 
