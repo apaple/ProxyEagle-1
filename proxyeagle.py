@@ -37,6 +37,7 @@ try:
     else:
         raise RuntimeError()
 except:
+    Logo()
     Usage()
     exit(-1)
 
