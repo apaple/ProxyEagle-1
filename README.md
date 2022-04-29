@@ -11,6 +11,8 @@ Your ``proxies.txt`` file format needs to be like:
 ```
 proxy:port
 ```
+for each line
+
 **Run like:**<br>
 ```
 python3 proxyeagle timeout proxies.txt protocol
