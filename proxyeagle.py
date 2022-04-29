@@ -33,7 +33,7 @@ try:
     int(argv[1])
     str(argv[2])
 
-    if "http" or "https" or "socks" or "socks4" in argv[3]:
+    if "http" or "https" or "socks" or "socks4" or "socks5" in argv[3]:
         pass
     else:
         raise RuntimeError()
