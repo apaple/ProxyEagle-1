@@ -17,9 +17,9 @@ for each line
 ```
 python3 proxyeagle timeout proxies.txt protocol
 
-For socks checking just do python3 proxyeagle timeout proxies.txt socks
-For http checking just do python3 proxyeagle timeout proxies.txt http
-For https checking just do python3 proxyeagle timeout proxies.txt socks
+For socks checking just do python3 proxyeagle.py timeout proxies.txt socks
+For http checking just do python3 proxyeagle.py timeout proxies.txt http
+For https checking just do python3 proxyeagle.py timeout proxies.txt socks
 ```
 ### Features
 - Parallel threads
