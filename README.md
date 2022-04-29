@@ -15,7 +15,7 @@ proxy:port
 ```
 python3 proxyeagle timeout proxies.txt http
 
-For socks checking just do python3 proxyeagle timeout proxies.txt http
+For socks checking just do python3 proxyeagle timeout proxies.txt socks
 ```
 ### Features
 - Parallel threads
