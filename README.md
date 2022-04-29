@@ -8,8 +8,8 @@ ProxyEagle is connecting to the proxies and send a request to the host ```pix4.d
 
 ### Features
 - Parallel threads
-- Custom timeout for proxies
-- Efficient Check
+- Custom timeout for proxy check
+- Efficient Proxy Check
 - HTTP/HTTPS Support
 
 
