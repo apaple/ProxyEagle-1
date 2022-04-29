@@ -22,9 +22,6 @@ For socks checking just do python3 proxyeagle timeout proxies.txt http
 - Efficient Proxy Check
 - HTTP/HTTPS/SOCKS Support
 
-```For socks checking just do python3 proxyeagle timeout proxies.txt http```
-
-
 ### Requirement
 ```Python```
 
