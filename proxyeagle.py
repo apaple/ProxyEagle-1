@@ -100,10 +100,18 @@ def Main():
     hosts = []
     ports = []
     proxyWhiteSpaceFix = ct.split("\n")
+    destroy = False
     for proxy in proxyWhiteSpaceFix:
-        h,p = proxy.split(":")
+        try:
+            h,p = proxy.split(":")
+        except:
+            destroy = True
+            break
         hosts.append(h)
         ports.append(p)
+    if destroy:
+        print("\033[31mYour proxy file contains not a correct format!\nFormats needs to be like proxy:port in each line\033[0m")
+        return exit(-1)
 
     checkX = CheckFile(ct.split("\n"))
     if checkX == False:
