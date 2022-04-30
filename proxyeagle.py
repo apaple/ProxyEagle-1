@@ -43,10 +43,13 @@ except:
     exit(-1)
 
 def FileRead(file = argv[2]):
+    rox = ""
     if os.path.exists(argv[2]):
         with open(f"{argv[2]}","r")as file:
             content = file.read().strip(" ").split("\n")
-            return content
+        for q in content:
+            rox += q+"\n"
+        return rox.strip("\n")
     else:
         return False
 
@@ -73,10 +76,9 @@ User-Agent: Mozilla/5.0 (compatible; Discordbot/1.0; +https://discordapp.com)"""
         return f"\033[31mBad proxy: \033[33m{info['proxy']}:{info['port']}\033[0m"
     finally:
         sockInit.close()
-def CheckFile():
+def CheckFile(data):
     invalid = False
-    ct = FileRead()
-    for check in ct:
+    for check in data:
         if ":" not in check:
             invalid = True
             break
@@ -86,12 +88,6 @@ def CheckFile():
         return True
 def Main():
     Logo()
-    checkX = CheckFile()
-    if checkX == False:
-        print("\033[31mYour proxy file contains not a correct format!\nFormats needs to be like proxy:port in each line, remove white lines\033[0m")
-        return exit(-1)
-    else:
-       pass
     ct = FileRead()
 
     if type(ct) is list:
@@ -103,11 +99,18 @@ def Main():
     pool = ThreadPoolExecutor(max_workers=61)
     hosts = []
     ports = []
-
-    for proxy in ct:
+    proxyWhiteSpaceFix = ct.split("\n")
+    for proxy in proxyWhiteSpaceFix:
         h,p = proxy.split(":")
         hosts.append(h)
         ports.append(p)
+
+    checkX = CheckFile(ct.split("\n"))
+    if checkX == False:
+        print("\033[31mYour proxy file contains not a correct format!\nFormats needs to be like proxy:port in each line\033[0m")
+        return exit(-1)
+    else:
+       pass
 
     ftrs = [pool.submit(ProxyConnector,proxy=Worker[0],port=Worker[1],protocol=argv[3]) for Worker in zip(hosts,ports)]
     for f in as_completed(ftrs):
@@ -115,3 +118,5 @@ def Main():
     pool.shutdown()
 if __name__ == "__main__":
     Main()
+
+    
