@@ -72,8 +72,10 @@ def ProxyConnector(**info):
         sended = sockInit.send(header.encode("utf-8"))
         response = sockInit.recv(1042).decode()
         if '200' or '301' in response:
-            print(response)
+            #print(response)
             goods += f"{info['proxy']}:{info['port']}\n"
+            with open('goods.txt',"a+")as file:
+                file.write(f"{info['proxy']}:{info['port']}\n")
             return f"\033[32mGood proxy: \033[33m{info['proxy']}:{info['port']}\033[0m"
         else:
             return f"\033[31mBad proxy: \033[33m{info['proxy']}:{info['port']}\033[0m"
