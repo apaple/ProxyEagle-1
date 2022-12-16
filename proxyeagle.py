@@ -4,10 +4,13 @@ from concurrent.futures import Future
 import socket
 from sys import exit,argv
 import os.path
+from os import cpu_count
 
 # Author: Z3NTL3
 # Studios: Pix4Devs
 # Contact: www.pix4.dev
+
+cores = (cpu_count() * 2) -2
 
 def Usage():
     print(f"""
@@ -102,7 +105,7 @@ def Main():
         print(f"\033[31mFile: \033[33m\'{argv[2]}\'\033[0m does not exist in the current directory\033[0m")
         exit(-1)
     
-    pool = ThreadPoolExecutor(max_workers=61)
+    pool = ThreadPoolExecutor(max_workers=int(cores))
     hosts = []
     ports = []
     proxyWhiteSpaceFix = ct.split("\n")
