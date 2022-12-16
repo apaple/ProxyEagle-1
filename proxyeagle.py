@@ -73,13 +73,13 @@ def ProxyConnector(**info):
             hp = 80
             header = f"""GET / HTTP/1.1\r\n"""
             header += "Host: google.com:{hp}\r\n\r\n"
-            
+
         port = int(info['port'])
         sockInit.settimeout(int(argv[1]))
         sockInit.connect((f"{info['proxy']}",port))
         sended = sockInit.send(header.encode("utf-8"))
         response = sockInit.recv(1042).decode()
-        if '200' or '301' in response:
+        if  200 >= 299 or 300 >= 399 or 100 >= 199 in response:
             #print(response)
             goods += f"{info['proxy']}:{info['port']}\n"
             with open('goods.txt',"a+")as file:
