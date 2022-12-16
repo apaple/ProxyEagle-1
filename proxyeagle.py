@@ -63,23 +63,42 @@ def ProxyConnector(**info):
         if info['protocol'] == "http":
             hp = 80
             header = f"""GET / HTTP/1.1\r\n"""
-            header += "Host: google.com:{hp}\r\n\r\n"
+            header += f"Host: google.com:{hp}\r\n\r\n"
 
         elif info['protocol'] == "https":
             hp = 443
             header = f"""GET / HTTP/1.1\r\n"""
-            header += "Host: google.com:{hp}\r\n\r\n"
+            header += f"Host: google.com:{hp}\r\n\r\n"
         else:
             hp = 80
             header = f"""GET / HTTP/1.1\r\n"""
-            header += "Host: google.com:{hp}\r\n\r\n"
+            header += f"Host: google.com:{hp}\r\n\r\n"
 
         port = int(info['port'])
         sockInit.settimeout(int(argv[1]))
         sockInit.connect((f"{info['proxy']}",port))
         sended = sockInit.send(header.encode("utf-8"))
         response = sockInit.recv(1042).decode()
-        if  200 >= 299 or 300 >= 399 or 100 >= 199 in response:
+
+        succes_codes = [x for x in range(200,299+1)]
+        info_codes = [x for x in range(100,199+1)]
+        red_codes = [x for x in range(300,399+1)]
+
+        workingProxy = False
+
+        for sc in succes_codes:
+            if str(sc) in response:
+                workingProxy = True
+
+        for sc in info_codes:
+            if str(sc) in response:
+                workingProxy = True
+
+        for sc in red_codes:
+            if str(sc) in response:
+                workingProxy = True
+
+        if workingProxy:
             #print(response)
             goods += f"{info['proxy']}:{info['port']}\n"
             with open('goods.txt',"a+")as file:
@@ -87,7 +106,9 @@ def ProxyConnector(**info):
             return f"\033[32mGood proxy: \033[33m{info['proxy']}:{info['port']}\033[0m"
         else:
             return f"\033[31mBad proxy: \033[33m{info['proxy']}:{info['port']}\033[0m"
-    except:
+    except Exception as e:
+        if e == KeyboardInterrupt:
+            return "keyboard"
         return f"\033[31mBad proxy: \033[33m{info['proxy']}:{info['port']}\033[0m"
     finally:
         sockInit.close()
@@ -135,9 +156,16 @@ def Main():
        pass
 
     ftrs = [pool.submit(ProxyConnector,proxy=Worker[0],port=Worker[1],protocol=argv[3]) for Worker in zip(hosts,ports)]
-    for f in as_completed(ftrs):
-        print(f.result())
-    pool.shutdown()
+    try:
+        for f in as_completed(ftrs):
+            if f.result() == "keyboard":
+                f.cancel()
+                break
+            print(f.result())
+        pool.shutdown(wait=False,cancel_futures=True)
+    except:
+        pool.shutdown(wait=False,cancel_futures=True)
+
 if __name__ == "__main__":
     Main()
 
