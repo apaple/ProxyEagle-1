@@ -162,8 +162,9 @@ def Main():
                 f.cancel()
                 break
             print(f.result())
-        pool.shutdown(wait=False,cancel_futures=True)
     except:
+        pass
+    finally:
         pool.shutdown(wait=False,cancel_futures=True)
 
 if __name__ == "__main__":
