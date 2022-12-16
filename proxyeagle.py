@@ -62,13 +62,18 @@ def ProxyConnector(**info):
     try:
         if info['protocol'] == "http":
             hp = 80
-            header = f"""GET google.com:{hp} HTTP/1.1\r\n\r\n"""
+            header = f"""GET / HTTP/1.1\r\n"""
+            header += "Host: google.com:{hp}\r\n\r\n"
+
         elif info['protocol'] == "https":
             hp = 443
-            header = f"""GET google.com:{hp} HTTP/1.1\r\n\r\n"""
+            header = f"""GET / HTTP/1.1\r\n"""
+            header += "Host: google.com:{hp}\r\n\r\n"
         else:
             hp = 80
-            header = f"""GET google.com:{hp} HTTP/1.1\r\n\r\n"""
+            header = f"""GET / HTTP/1.1\r\n"""
+            header += "Host: google.com:{hp}\r\n\r\n"
+            
         port = int(info['port'])
         sockInit.settimeout(int(argv[1]))
         sockInit.connect((f"{info['proxy']}",port))
