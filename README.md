@@ -1,4 +1,10 @@
 # ProxyEagle
+<a href="https://github.com/Z3NTL3/ProxyBeast">Use ProxyBeast instead!</a><br>
+**It is a replacement by our-end for ProxyEagle.**<br>
+``Proxy Beast is a extremely precisely accurate and fast proxy checker supporting HTTP, HTTPS, SOCK4, SOCKS5.``
+<br><br>
+
+
  Proxy Eagle is an advanced proxy checker powered with parallelism. Using Sockets. Build with standard python libraries. The only requirement is just Python. 🦅
 
 ProxyEagle is connecting to the proxies and sends a request to Google host if succeeds it saves the good proxies on 'goods.txt' in the same directory as this tool.
