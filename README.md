@@ -18,11 +18,12 @@ for each line
 
 **Run like:**<br>
 ```
-python3 proxyeagle.py timeout proxies.txt protocol
+python3 proxyeagle.py <timeout> <proxiesFile> <protocol>
 
-For socks checking just do python3 proxyeagle.py timeout proxies.txt socks
-For http checking just do python3 proxyeagle.py timeout proxies.txt http
-For https checking just do python3 proxyeagle.py timeout proxies.txt socks
+python3 proxyeagle.py timeout proxies.txt socks5
+python3 proxyeagle.py timeout proxies.txt socks4
+python3 proxyeagle.py timeout proxies.txt http
+python3 proxyeagle.py timeout proxies.txt socks
 ```
 ### Features
 - Parallel threads
