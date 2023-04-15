@@ -7,7 +7,7 @@
 
  Proxy Eagle is an advanced proxy checker powered with parallelism. Using Sockets. Build with standard python libraries. The only requirement is just Python. 🦅
 
-ProxyEagle is connecting to the proxies and sends a request to Google host if succeeds it saves the good proxies on 'goods.txt' in the same directory as this tool.
+ProxyEagle is connecting to the proxies and sends a request to Google host if succeeds it saves the good proxies on 'lvl<proxyLevel>.txt' in the same directory as this tool.
 <a href="https://www.youtube.com/watch?v=wSUowX1dXgA"> Video Proof</a><br>
 
 <table><tr><th>Organisation</th><th>Application</th><th>Developer</th></tr><tr><td><img src="https://media.discordapp.net/attachments/956310840464773200/968964843333877830/logopix4.png" width="20">PIX4</td><td>Proxy Eagle</td><td>Z3NTL3</td></tr></table>
