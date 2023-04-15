@@ -99,22 +99,21 @@ def ProxyConnector(**info):
             goods += f"{info['proxy']}:{info['port']}\n"
 
             level = 3
+            rV = ""
 
             if ("X-Forwarded-For" not in data["headers"] and "Via" not in data["headers"] and "From" not in data["headers"]):
                 level = 1
-                with open(f'lvl{level}.txt', "a+")as file:
-                    file.write(f"{info['proxy']}:{info['port']}\n")
-                return f"\033[32mGood proxy: \033[33m{info['proxy']}:{info['port']} \033[0m[\033[1mElite Proxy\033[0m]"
+                rv = f"\033[32mGood proxy: \033[33m{info['proxy']}:{info['port']} \033[0m[\033[1mElite Proxy\033[0m]"
             elif ("X-Forwarded-For" in data["headers"]):
                 level = 3
-                with open(f'lvl{level}.txt', "a+")as file:
-                    file.write(f"{info['proxy']}:{info['port']}\n")
-                return f"\033[32mGood proxy: \033[33m{info['proxy']}:{info['port']} \033[0m[\033[1mTransparent Proxy\033[0m]"
+                rv = f"\033[32mGood proxy: \033[33m{info['proxy']}:{info['port']} \033[0m[\033[1mTransparent Proxy\033[0m]"
             else:
                 level = 2
-                with open(f'lvl{level}.txt', "a+")as file:
-                    file.write(f"{info['proxy']}:{info['port']}\n")
-                return f"\033[32mGood proxy: \033[33m{info['proxy']}:{info['port']} \033[0m[\033[1mAnonymous Proxy\033[0m]"
+                rv = f"\033[32mGood proxy: \033[33m{info['proxy']}:{info['port']} \033[0m[\033[1mAnonymous Proxy\033[0m]"
+
+            with open(f'lvl{level}.txt', "a+")as file:
+                file.write(f"{info['proxy']}:{info['port']}\n")
+            return rv
         else:
             return f"\033[31mBad proxy: \033[33m{info['proxy']}:{info['port']}\033[0m"
 
