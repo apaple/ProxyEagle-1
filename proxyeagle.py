@@ -11,7 +11,7 @@ import json
 # Studios: Pix4Devs
 # Contact: www.pix4.dev
 
-cores = (cpu_count() * 200) - 2
+cores = (cpu_count() * 250) - 2
 
 
 def Usage():
