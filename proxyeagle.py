@@ -111,7 +111,7 @@ def ProxyConnector(**info):
                 level = 2
                 rv = f"\033[32mGood proxy: \033[33m{info['proxy']}:{info['port']} \033[0m[\033[1mAnonymous Proxy\033[0m]"
 
-            with open(f'lvl{level}.txt', "a+")as file:
+            with open(f'proxy.txt', "a+")as file:
                 file.write(f"{info['proxy']}:{info['port']}\n")
             return rv
         else:
